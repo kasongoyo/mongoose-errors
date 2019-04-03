@@ -1,0 +1,42 @@
+{
+  "name": "mongoose-errors",
+  "version": "1.0.0",
+  "description": "Mongoose error handler normalizer",
+  "main": "index.js",
+  "engines": {
+    "node": ">=7.6.0"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/**/bootstrap.spec.js test/**/*spec.js --reporter spec",
+    "pretest": "eslint --ext .js .",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --fix --ext .js ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kasongoyo/mongoose-errors.git"
+  },
+  "keywords": [
+    "mongoose",
+    "errors",
+    "mongoose-errors"
+  ],
+  "author": "kasongoyo@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kasongoyo/mongoose-errors/issues"
+  },
+  "homepage": "https://github.com/kasongoyo/mongoose-errors#readme",
+  "dependencies": {
+    "http-errors": "^1.7.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-mocha": "^5.3.0",
+    "eslint-plugin-node": "^8.0.1",
+    "faker": "^4.1.0",
+    "mocha": "^6.0.2",
+    "mongoose": "^5.4.21"
+  }
+}
