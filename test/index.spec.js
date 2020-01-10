@@ -17,7 +17,13 @@ describe('Mongoose Errors', function () {
                 anyField: String,
                 requiredField: {
                     type: String,
-                    required: true
+                    required: [true, 'requiredField is required'],
+                    validate: {
+                        validator: function(v) {
+                          return /\d{3}-\d{3}-\d{4}/.test(v);
+                        },
+                        message: props => `${props.value} is not a valid phone number!`
+                    },
                 }
             });
             ModelSchema.plugin(MongooseErrors);
@@ -26,7 +32,7 @@ describe('Mongoose Errors', function () {
 
 
         it('should normalize mongoose validation error', function (done) {
-            const test = { anyField: faker.random.words() };
+            const test = { anyField: faker.random.words(), requiredField: 'mama' };
             Model
                 .create(test)
                 .catch(error => {

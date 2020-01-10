@@ -7,7 +7,7 @@
     "node": ">=7.6.0"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/**/bootstrap.spec.js test/**/*spec.js --reporter spec",
+    "test": "./node_modules/mocha/bin/mocha --watch test/**/bootstrap.spec.js test/**/*spec.js --reporter spec",
     "pretest": "eslint --ext .js .",
     "lint": "eslint --ext .js .",
     "lint:fix": "eslint --fix --ext .js ."

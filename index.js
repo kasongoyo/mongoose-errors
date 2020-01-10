@@ -25,12 +25,15 @@ module.exports = schema => {
     const handleValidationError = (error, next) => {
         // extract invalid path from mongo error message and make
         // them human friendly.
-        let errorData = '';
-        Object.keys(error.errors).forEach(key => {
-            errorData += `${error.errors[key].message};`;
-        });
-
-        next(new createError(400, errorData));
+        // let errorData = '';
+        const errorInfo = Object.keys(error.errors).reduce((acc, key) => {
+            // errorData += `${error.errors[key].message};`;
+            acc[key] = error.errors[key].message;
+            return acc;
+        }, {});
+        const customError = new Error('validation Failed');
+        customError.info = errorInfo;
+        next(new createError(400, customError));
     };
 
     const handleCastError = (error, next) => {
