@@ -8,8 +8,15 @@ process.env.NODE_ENV = 'test';
 const mongoose = require('mongoose');
 
 before(function (done) {
-    //setup database
-    mongoose.connect('mongodb://localhost/mongoose-errors', done);
+  //setup database
+  mongoose.connect('mongodb://localhost/mongoose-errors',
+    {
+      useCreateIndex: true,
+      useNewUrlParser: true
+    })
+    .then(() => {
+      done()
+    })
 });
 
 

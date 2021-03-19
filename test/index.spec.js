@@ -19,8 +19,8 @@ describe('Mongoose Errors', function () {
                     type: String,
                     required: [true, 'requiredField is required'],
                     validate: {
-                        validator: function(v) {
-                          return /\d{3}-\d{3}-\d{4}/.test(v);
+                        validator: function (v) {
+                            return /\d{3}-\d{3}-\d{4}/.test(v);
                         },
                         message: props => `${props.value} is not a valid phone number!`
                     },
@@ -90,7 +90,8 @@ describe('Mongoose Errors', function () {
         it('should normalize mongoose duplicate error', function (done) {
             const test = { anyField };
             Model
-                .create(test)
+                .init()
+                .then(() => Model.create(test))
                 .catch(error => {
                     expect(error.statusCode).to.equal(409);
                     done();
