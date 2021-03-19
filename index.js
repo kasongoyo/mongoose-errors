@@ -40,7 +40,9 @@ module.exports = schema => {
         //castError occur with mongoose find operations fails;
         //it make sense to associate it with 404 http code i.e
         //resource not found
-        next(new createError(404, error));
+        const customError = new Error(error.message)
+        customError.name = error.name
+        next(new createError(404, customError));
     };
 
     let handleError = (error, res, next) => {

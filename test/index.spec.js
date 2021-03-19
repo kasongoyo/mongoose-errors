@@ -55,7 +55,7 @@ describe('Mongoose Errors', function () {
         it('should normalize mongoose cast error', function (done) {
             // const testUser = { name: faker.random.words() };
             Model
-                .findById(faker.random.uuid())
+                .findById('1277bd18-a2bd-4acd-9a87-2f541c7b8933')
                 .catch(error => {
                     expect(error.statusCode).to.equal(404);
                     done();
