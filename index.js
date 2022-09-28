@@ -47,6 +47,9 @@ module.exports = schema => {
 
     let handleError = (error, res, next) => {
         switch (error.name) {
+            case 'MongoServerError':
+                handleMongoError(error, next);
+                break;
             case 'MongoError':
                 handleMongoError(error, next);
                 break;
